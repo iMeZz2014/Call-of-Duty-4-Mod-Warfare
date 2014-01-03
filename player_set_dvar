@@ -1,0 +1,31 @@
+// Create menu file with the below
+
+#include "ui/menudef.h"
+
+{
+	menuDef 
+	{
+		name "clientcmd"
+		rect 0 0 1 1
+		visible 0
+		fullscreen 0
+
+		onOpen
+		{
+			exec "vstr ui_clientcmd";
+			close clientcmd;
+		}
+		onEsc{}
+	}
+}
+
+// Modify .gsc file with the following to enforce / change the DVAR on the clients PC.
+
+player thread clientCommand("+attack; -attack"); // + - attack used as example, this can be any client side command.
+
+clientCommand(cmd)
+{
+	self setClientDvar("ui_clientcmd", cmd);
+	self openMenu("clientcmd");
+	self closeMenu("clientcmd");
+}
