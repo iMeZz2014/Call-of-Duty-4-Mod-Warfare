@@ -1,4 +1,12 @@
+// Change client side Dvar via .GSC file
+
+self setClientDvar( "com_maxfps", 125 ); // This will force com_maxfps to 125 on the clients PC.
+
+// Execute command via clients console
+
 // Create menu file with the below
+
+---------------------------------------------------
 
 #include "ui/menudef.h"
 
@@ -19,9 +27,17 @@
 	}
 }
 
+---------------------------------------------------
+
 // Modify .gsc file with the following to enforce / change the DVAR on the clients PC.
 
+---------------------------------------------------
+
 player thread clientCommand("+attack; -attack"); // + - attack used as example, this can be any client side command.
+
+---------------------------------------------------
+
+// ClientCommand Function
 
 clientCommand(cmd)
 {
@@ -29,3 +45,4 @@ clientCommand(cmd)
 	self openMenu("clientcmd");
 	self closeMenu("clientcmd");
 }
+
